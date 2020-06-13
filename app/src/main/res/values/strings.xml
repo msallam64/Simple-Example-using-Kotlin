@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Tech Task001-2</string>
+    <string name="et_Hint">Your Answer</string>
+    <string name="reset_btn">Try Again</string>
+    <string name="answer_wrong">Sorry ,Your Answer Is wrong please try Again</string>
+    <string name="answer_ex">Example of answers may help {targetCalories : 2000( target for one day) , diet : vegetarian( diet that the meal plan has to adhere to, e.g. "vegetarian", "vegan", "paleo" etc.) , exclude(A comma-separated list of allergens)}</string>
+    <string name="question1">What is the caloric target for one day? </string>
+    <string name="question2">Enter a diet that the meal plan has to adhere to,</string>
+    <string name="question3">A comma-separated list of allergens or ingredients that must be excluded.</string>
+    <string name="send_btn">Verify My Answer</string>
+</resources>
