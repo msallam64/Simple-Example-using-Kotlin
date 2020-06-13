@@ -1,12 +1,12 @@
-package com.example.kotlintask.UI
+package com.example.kotlintask.View
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.kotlintask.R
 
-class ResultActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_result)
+        setContentView(R.layout.activity_main)
     }
 }

@@ -11,11 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UI.ResultActivity"
-            android:parentActivityName=".UI.AnswerQuestionActivity"></activity>
-        <activity android:name=".UI.AnswerQuestionActivity"
-            android:parentActivityName=".UI.MainActivity"></activity>
-        <activity android:name=".UI.MainActivity">
+        <activity android:name=".View.ResultActivity"
+            android:parentActivityName=".View.AnswerQuestionActivity"></activity>
+        <activity android:name=".View.AnswerQuestionActivity"
+            android:parentActivityName=".View.MainActivity"></activity>
+        <activity android:name=".View.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

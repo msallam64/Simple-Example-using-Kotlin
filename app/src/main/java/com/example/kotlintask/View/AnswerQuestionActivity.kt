@@ -1,4 +1,4 @@
-package com.example.kotlintask.UI
+package com.example.kotlintask.View
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
