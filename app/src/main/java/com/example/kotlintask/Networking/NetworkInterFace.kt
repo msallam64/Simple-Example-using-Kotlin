@@ -12,7 +12,7 @@ interface NetworkInterFace {
 
     @Headers(
         "x-rapidapi-host: spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-        "x-rapidapi-key: 581b8fe4ecmsh74a0d4f102c6a26p18ea35jsn46acce7a9698",
+        "x-rapidapi-key: api-key",
         "useQueryString: true"
     )
     @GET("recipes/mealplans/generate")
