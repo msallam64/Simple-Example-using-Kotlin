@@ -1,8 +1,6 @@
 package com.example.kotlintask.Networking
 
 import android.util.Log
-import androidx.lifecycle.MutableLiveData
-import com.example.kotlintask.Model.DataModel
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
