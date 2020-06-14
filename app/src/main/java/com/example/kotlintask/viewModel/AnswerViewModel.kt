@@ -11,6 +11,7 @@ import com.example.kotlintask.model.Meals
 import com.example.kotlintask.model.Nutrients
 import com.example.kotlintask.model.UserAnswer
 import com.example.kotlintask.Networking.Networking
+import com.example.kotlintask.Util.SingleLiveEvent
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -22,11 +23,11 @@ class AnswerViewModel(application: Application) : AndroidViewModel(application),
     var answer2: ObservableField<String>? = null
     var answer3: ObservableField<String>? = null
     var useranswer: MutableLiveData<UserAnswer>? = null
-    var btnSelected: ObservableBoolean? = null
+    val uiEventLiveData = SingleLiveEvent<Int>()
+
 
 
     init {
-        btnSelected = ObservableBoolean(false)
         answer1 = ObservableField("")
         answer2 = ObservableField("")
         answer3 = ObservableField("")
@@ -56,6 +57,7 @@ class AnswerViewModel(application: Application) : AndroidViewModel(application),
         var data: DataModel = response.body()!!
         var mealsdata: List<Meals>? = data.meals
         var nutrient: Nutrients? = data.nutrients
+        uiEventLiveData.value=1
 
     }
 

@@ -24,8 +24,11 @@ class AnswerQuestionActivity : AppCompatActivity() {
     }
     private fun initObservables() {
         viewmodel?.useranswer?.observe(this, Observer { userAns ->
-            Toast.makeText(this, "welcome,", Toast.LENGTH_LONG).show()
+        })
 
+        viewmodel?.uiEventLiveData?.observe(this, Observer {if (it ==1 ) {
+            Toast.makeText(this,"Done",Toast.LENGTH_LONG).show()
+        }
         })
 
 
