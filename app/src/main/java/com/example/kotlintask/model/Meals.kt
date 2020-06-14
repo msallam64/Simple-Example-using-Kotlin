@@ -1,7 +1,7 @@
 package com.example.kotlintask.model
 
 
-data class Meals (
+data class Meals  (
 
     val id : Int,
     val imageType : String,

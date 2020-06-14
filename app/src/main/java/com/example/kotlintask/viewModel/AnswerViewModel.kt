@@ -1,20 +1,23 @@
 package com.example.kotlintask.viewModel
 
 
+import android.app.Activity
 import android.app.Application
-import androidx.databinding.ObservableBoolean
+import android.content.Intent
 import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
+import com.example.kotlintask.Networking.Networking
+import com.example.kotlintask.Util.SingleLiveEvent
+import com.example.kotlintask.View.ResultActivity
 import com.example.kotlintask.model.DataModel
 import com.example.kotlintask.model.Meals
 import com.example.kotlintask.model.Nutrients
 import com.example.kotlintask.model.UserAnswer
-import com.example.kotlintask.Networking.Networking
-import com.example.kotlintask.Util.SingleLiveEvent
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+
 
 class AnswerViewModel(application: Application) : AndroidViewModel(application),
     Callback<DataModel> {
@@ -24,7 +27,9 @@ class AnswerViewModel(application: Application) : AndroidViewModel(application),
     var answer3: ObservableField<String>? = null
     var useranswer: MutableLiveData<UserAnswer>? = null
     val uiEventLiveData = SingleLiveEvent<Int>()
-
+    var mealsdata: List<Meals>? = null
+    var nutrient: Nutrients? = null
+    var data: DataModel? = null
 
 
     init {
@@ -34,9 +39,13 @@ class AnswerViewModel(application: Application) : AndroidViewModel(application),
         useranswer = MutableLiveData<UserAnswer>()
     }
 
+    fun startMyActivity(activity: Activity) {
+        var intent = Intent(activity, ResultActivity::class.java)
+    }
 
     fun getresult() {
-        if (answer1 != null && answer2 != null && answer3 != null) {
+        if (answer1 == null || answer2 == null || answer3 == null) {
+        } else {
             var request = Networking.Factory.create()
             val call = request!!.getMeals(
                 "day",
@@ -45,6 +54,7 @@ class AnswerViewModel(application: Application) : AndroidViewModel(application),
                 exclude = answer3?.get()!!
             )
             call.enqueue(this)
+
         }
     }
 
@@ -54,10 +64,12 @@ class AnswerViewModel(application: Application) : AndroidViewModel(application),
     }
 
     override fun onResponse(call: Call<DataModel>, response: Response<DataModel>) {
-        var data: DataModel = response.body()!!
-        var mealsdata: List<Meals>? = data.meals
-        var nutrient: Nutrients? = data.nutrients
-        uiEventLiveData.value=1
+        if (response.isSuccessful) {
+            data = response.body()!!
+            mealsdata = data!!.meals
+            nutrient = data!!.nutrients
+            uiEventLiveData.value = 1
+        }
 
     }
 
