@@ -1,4 +1,4 @@
-package com.example.kotlintask.Model
+package com.example.kotlintask.model
 
 import com.google.gson.annotations.SerializedName
 

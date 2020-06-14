@@ -1,4 +1,4 @@
-package com.example.kotlintask.Model
+package com.example.kotlintask.model
 
 
 data class Meals (

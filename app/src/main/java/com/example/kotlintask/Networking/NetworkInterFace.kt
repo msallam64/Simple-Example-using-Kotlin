@@ -1,6 +1,6 @@
 package com.example.kotlintask.Networking
 
-import com.example.kotlintask.Model.DataModel
+import com.example.kotlintask.model.DataModel
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Headers
@@ -17,7 +17,7 @@ interface NetworkInterFace {
     )
     @GET("recipes/mealplans/generate")
     fun getMeals(
-        @Query("timeFrame") timeFrame: String,@Query("targetCalories") targetCalories: Int, @Query("diet") diet: String,
+        @Query("timeFrame") timeFrame: String,@Query("targetCalories") targetCalories: String, @Query("diet") diet: String,
         @Query("exclude") exclude: String
     ): Call<DataModel>
 }
