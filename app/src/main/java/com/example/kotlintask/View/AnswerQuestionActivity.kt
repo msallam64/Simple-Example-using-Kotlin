@@ -1,5 +1,6 @@
 package com.example.kotlintask.View
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -10,7 +11,7 @@ import com.example.kotlintask.R
 import com.example.kotlintask.databinding.AnswerQuestionsActivityBinding
 import com.example.kotlintask.viewModel.AnswerViewModel
 
-class AnswerQuestionActivity : AppCompatActivity() {
+class AnswerQuestionActivity : AppCompatActivity()  {
 
     var binding: AnswerQuestionsActivityBinding? = null
     var viewmodel: AnswerViewModel? = null
@@ -24,12 +25,14 @@ class AnswerQuestionActivity : AppCompatActivity() {
     }
 
     private fun initObservables() {
-        viewmodel?.useranswer?.observe(this, Observer { userAns ->
+        viewmodel?.userData?.observe(this, Observer {
+
         })
 
         viewmodel?.uiEventLiveData?.observe(this, Observer {
             if (it == 1) {
                 Toast.makeText(this, "Done", Toast.LENGTH_LONG).show()
+                startActivity(Intent(this,ResultActivity::class.java))
             }
         })
 
