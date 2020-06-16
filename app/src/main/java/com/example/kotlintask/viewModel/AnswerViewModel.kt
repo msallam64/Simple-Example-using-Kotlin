@@ -5,6 +5,7 @@ import android.app.Application
 import android.util.Log
 import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.kotlintask.Networking.Networking
 import com.example.kotlintask.RoomData.DbResult
@@ -19,10 +20,9 @@ import retrofit2.Response
 
 class AnswerViewModel(application: Application) : AndroidViewModel(application),
     Callback<DataModel> {
-
-    var answer1: ObservableField<String>? = null
-    var answer2: ObservableField<String>? = null
-    var answer3: ObservableField<String>? = null
+    var answer1: ObservableField<String?>? = null
+    var answer2: ObservableField<String?>? = null
+    var answer3: ObservableField<String?>? = null
     var userData: MutableLiveData<DataModel>? = null
     val uiEventLiveData = SingleLiveEvent<Int>()
     var mealsdata: List<Meals>? = null
@@ -32,29 +32,33 @@ class AnswerViewModel(application: Application) : AndroidViewModel(application),
 
 
     init {
-        answer1 = ObservableField("")
-        answer2 = ObservableField("")
-        answer3 = ObservableField("")
+        answer1 = ObservableField<String?>("")
+        answer2 = ObservableField<String?>("")
+        answer3 = ObservableField<String?>("")
         userData = MutableLiveData<DataModel>()
     }
 
     fun getresult() {
-        if (answer1 == null || answer2 == null || answer3 == null) {
-        } else {
+        val ans1: String? = answer1?.get()?.apply { val value = toString() }
+        val ans2: String? = answer2?.get()?.apply { val value = toString() }
+        val ans3: String? = answer3?.get()?.apply { val value = toString() }
+        if (ans1?.length!! > 0 && ans2?.length!! > 0 && ans3?.length!! > 0) {
             var request = Networking.Factory.create()
             val call = request.getMeals(
                 "day",
-                targetCalories = answer1?.get()!!,
-                diet = answer2?.get()!!,
-                exclude = answer3?.get()!!
+                targetCalories = ans1!!,
+                diet = ans2!!,
+                exclude = ans3!!
             )
             call.enqueue(this)
-
+        } else {
+            uiEventLiveData.value = 0
         }
     }
 
     override fun onFailure(call: Call<DataModel>, t: Throwable) {
         Log.e("ER", t.message.toString())
+        uiEventLiveData.value = 0
     }
 
     override fun onResponse(call: Call<DataModel>, response: Response<DataModel>) {
@@ -66,6 +70,8 @@ class AnswerViewModel(application: Application) : AndroidViewModel(application),
             databaseReslut!!.getRepoDao()!!.insertAllmeals(mealsdata)
             databaseReslut!!.getRepoDao()!!.insertAllnutrient(nutrient)
             uiEventLiveData.value = 1
+        } else {
+            uiEventLiveData.value = 0
         }
 
     }
