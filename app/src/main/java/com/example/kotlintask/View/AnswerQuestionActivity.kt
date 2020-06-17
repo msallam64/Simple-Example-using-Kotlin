@@ -25,16 +25,16 @@ class AnswerQuestionActivity : AppCompatActivity()  {
     }
 
     private fun initObservables() {
-        viewmodel?.userData?.observe(this, Observer {
-
-        })
-
         viewmodel?.uiEventLiveData?.observe(this, Observer {
             if (it == 1) {
                 Toast.makeText(this, "Done", Toast.LENGTH_LONG).show()
                 startActivity(Intent(this,ResultActivity::class.java))
+
+            }else{
+                Toast.makeText(this, R.string.answer_wrong, Toast.LENGTH_LONG).show()
             }
         })
+
 
 
     }

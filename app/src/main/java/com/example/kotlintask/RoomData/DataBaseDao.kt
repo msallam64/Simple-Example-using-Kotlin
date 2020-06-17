@@ -1,10 +1,10 @@
 package com.example.kotlintask.RoomData
 
+import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.example.kotlintask.model.DataModel
 import com.example.kotlintask.model.Meals
 import com.example.kotlintask.model.Nutrients
 

@@ -69,6 +69,7 @@ class AnswerViewModel(application: Application) : AndroidViewModel(application),
             nutrient = data!!.nutrients
             databaseReslut!!.getRepoDao()!!.insertAllmeals(mealsdata)
             databaseReslut!!.getRepoDao()!!.insertAllnutrient(nutrient)
+
             uiEventLiveData.value = 1
         } else {
             uiEventLiveData.value = 0
