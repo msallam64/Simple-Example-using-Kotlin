@@ -10,7 +10,7 @@ class Networking {
     companion object Factory {
         var gson = GsonBuilder().setLenient().create()
         fun create(): NetworkInterFace {
-            Log.e("retrofit", "created")
+            //Log.e("retrofit", "created")
             val retrofit = Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .baseUrl(BASE_URL)

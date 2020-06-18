@@ -3,7 +3,6 @@ package com.example.kotlintask.View
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlintask.Adapter.adapter
@@ -11,8 +10,6 @@ import com.example.kotlintask.R
 import com.example.kotlintask.RoomData.DbResult
 import com.example.kotlintask.model.Meals
 import com.example.kotlintask.model.Nutrients
-import java.util.*
-import kotlin.collections.ArrayList
 
 class ResultActivity : AppCompatActivity() {
 

@@ -3,7 +3,6 @@ package com.example.kotlintask.Adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.LiveData
 import androidx.recyclerview.widget.RecyclerView
 import com.example.kotlintask.Networking.BASE_IMAGE_SIZE
 import com.example.kotlintask.Networking.BASE_IMAGE_URL

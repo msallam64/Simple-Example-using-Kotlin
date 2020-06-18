@@ -5,7 +5,6 @@ import android.app.Application
 import android.util.Log
 import androidx.databinding.ObservableField
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.kotlintask.Networking.Networking
 import com.example.kotlintask.RoomData.DbResult
